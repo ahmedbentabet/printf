@@ -20,39 +20,41 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					{
-						char c = (char)va_arg(args, int);
+					char ch = (char)va_arg(args, int);
 
-						_putchar(c);
-						count++;
-						break;
-					}
+					_putchar(ch);
+					count++;
+					break;
 				case 's':
 					print_string(va_arg(args, char *), &count);
 					break;
 				case 'd':
 				case 'i':
-					print_number(va_arg(args, int), &count);
+					print_number(va_arg(args, int));
 					break;
 				case '%':
 					_putchar('%');
 					count++;
 					break;
 				default:
-					_putchar(*format);
+					_putchar('%');
 					count++;
+					if (*format)
+					{
+						_putchar(*format);
+						count++;
+					}
 					break;
 			}
+			format++;
 		}
 		else
 		{
 			_putchar(*format);
 			count++;
 		}
-
 		format++;
 	}
 	va_end(args);
 	return (count);
-
 }
