@@ -20,11 +20,13 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					char ch = (char)va_arg(args, int);
+					{
+						char ch = (char)va_arg(args, int);
 
-					_putchar(ch);
-					count++;
-					break;
+						_putchar(ch);
+						count++;
+						break;
+					}
 				case 's':
 					print_string(va_arg(args, char *), &count);
 					break;
@@ -37,8 +39,13 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				default:
-					_putchar(*format);
+					_putchar('%');
 					count++;
+					if (*format)
+					{
+						_putchar(*format);
+						count++;
+					}
 					break;
 			}
 		}
