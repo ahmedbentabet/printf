@@ -43,7 +43,8 @@ void print_number(int n, int *count)
 	}
 
 	if (m >= 10)
-		print_number(m / 10 , count++);
+		print_number(m / 10 , count);
 
-	_putchar((m % 10) + 48);
+	_putchar((m % 10) + '0');
+	(*count)++;
 }
