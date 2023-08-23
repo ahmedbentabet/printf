@@ -43,7 +43,7 @@ void print_number(int n, int *count)
 	}
 
 	if (m >= 10)
-		print_number(m / 10 , count);
+		print_number(m / 10, count);
 
 	_putchar((m % 10) + '0');
 	(*count)++;
@@ -57,10 +57,11 @@ void print_number(int n, int *count)
 void print_binary(unsigned int n, int *count)
 {
 	int d = count_digits(n);
+	int i = 0;
 	char *b_str = (char *)malloc(d);
 
 	if (!b_str)
-		return ;
+		return;
 	while (n > 0)
 	{
 		b_str[i] = (n % 2) + '0';
@@ -93,5 +94,5 @@ int count_digits(int n)
 		n /= 10;
 		digits++;
 	}
-	return ( digits);
+	return (digits);
 }
