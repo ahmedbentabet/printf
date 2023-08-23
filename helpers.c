@@ -43,8 +43,56 @@ void print_number(int n, int *count)
 	}
 
 	if (m >= 10)
-		print_number(m / 10 , count);
+		print_number(m / 10, count);
 
 	_putchar((m % 10) + '0');
 	(*count)++;
+}
+
+/**
+ * print_binary - Prints the binary representation of an unsigned integer.
+ * @n: The unsigned integer to be printed in binary.
+ * @count: Pointer to the character count.
+ */
+void print_binary(unsigned int n, int *count)
+{
+	int d = count_digits(n);
+	int i = 0;
+	char *b_str = (char *)malloc(d);
+
+	if (!b_str)
+		return;
+	while (n > 0)
+	{
+		b_str[i] = (n % 2) + '0';
+		n /= 2;
+		i++;
+	}
+	if (i == 0)
+		b_str[i++] = '0';
+	b_str[i] = '\0';
+	for (i = i - 1; i >= 0; i--)
+	{
+		_putchar(b_str[i]);
+		(*count)++;
+	}
+	free(b_str);
+}
+
+/**
+ * count_digits - Counts the number of digits in an integer.
+ * @n: The integer for which to count digits.
+ *
+ * Return: The number of digits in the integer.
+ */
+int count_digits(int n)
+{
+	int digits = 0;
+
+	while (n != 0)
+	{
+		n /= 10;
+		digits++;
+	}
+	return (digits);
 }
