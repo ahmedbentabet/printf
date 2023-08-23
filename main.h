@@ -11,5 +11,6 @@ void print_number(int n, int *count);
 void print_string(const char *str, int *count);
 int _printf(const char *format, ...);
 void print_binary(unsigned int n, int *count);
+int count_digits(int n);
 
 #endif /* MAIN_H */
